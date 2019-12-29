@@ -68,5 +68,3 @@ output "privateSubnet2_id" {
 output "privateSubnet2_cidr" {
   value = "${aws_subnet.kubePrivateSubnet2.cidr_block}"
 }
-
-

@@ -16,4 +16,3 @@ module "kubeSubnet" {
   pri2_cidr_range = "${var.user_pri2_cidr_range}"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
 }
-

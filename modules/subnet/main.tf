@@ -30,6 +30,3 @@ resource "aws_subnet" "kubePrivateSubnet2" {
     Name = "KubePrivate_Subnet2"
   }
 }
-
-
-

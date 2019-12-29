@@ -27,4 +27,3 @@ variable "user_pri2_cidr_range" {
   type = string
   default = "192.168.10.48/28"
 }
-
