@@ -1,3 +1,9 @@
+variable "user_region" {
+  description = "User defined AWS region"
+  type = string
+  default = "ap-south-1" #Mumbai
+}
+
 variable "user_cidr_range" {
   description = "user define perticular cidr range specific to each environment"
   type = string

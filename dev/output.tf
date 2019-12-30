@@ -88,3 +88,24 @@ output "private_subnet2_zone" {
 output "private_subnet2_cidr" {
   value = "${module.kubeSubnet.privateSubnet2_cidr}"
 }
+
+
+#output internet gateway info
+
+output "internetgateway_name" {
+  value = "${module.kubeInternetGateway.internetgateway_name}"
+}
+
+output "internetgateway_id" {
+  value = "${module.kubeInternetGateway.internetgateway_id}"
+}
+
+#output EIP info
+
+output "eip_name" {
+  value = "${module.kubeEip.eip_name}"
+}
+
+output "eip_allocationid" {
+  value = "${module.kubeEip.eip_allocationid}"
+}
