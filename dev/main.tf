@@ -31,3 +31,18 @@ module "kubeNatGateway" {
   eip_allocationid = "${module.kubeEip.eip_allocationid}"
   public_subnetid = "${module.kubeSubnet.publicSubnet1_id}"
 }
+
+module "kubeRouteTable" {
+  source = "../modules/routetables"
+  vpc_id = "${module.kubeVpc.kubeVpc_id}"
+  private_sub1_id = "${module.kubeSubnet.privateSubnet1_id}"
+  private_sub2_id = "${module.kubeSubnet.privateSubnet2_id}"
+  private_routable_id = "${module.kubeRouteTable.private_routable_id}"
+
+  public_sub1_id = "${module.kubeSubnet.publicSubnet1_id}"
+  public_sub2_id = "${module.kubeSubnet.publicSubnet2_id}"
+  public_routable_id = "${module.kubeRouteTable.public_routable_id}"
+
+  nat_gw_id = "${module.kubeNatGateway.nat_id}"
+  igw_id = "${module.kubeInternetGateway.internetgateway_id}"
+}

@@ -100,7 +100,7 @@ output "internetgateway_id" {
   value = "${module.kubeInternetGateway.internetgateway_id}"
 }
 
-#output EIP info
+#Output EIP info
 
 output "eip_name" {
   value = "${module.kubeEip.eip_name}"
@@ -108,4 +108,15 @@ output "eip_name" {
 
 output "eip_allocationid" {
   value = "${module.kubeEip.eip_allocationid}"
+}
+
+
+#Output Private RouteTable info
+
+output "private_routable_name" {
+  value = "${module.kubeRouteTable.private_routable_name}"
+}
+
+output "private_routable_id" {
+  value = "${module.kubeRouteTable.private_routable_id}"
 }

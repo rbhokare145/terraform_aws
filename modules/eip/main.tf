@@ -1,4 +1,6 @@
-resource "aws" "kubeNetworkGateway" {
-  allocation_id = ""
-  subnet_id = ""
+resource "aws_eip" kubeeip {
+  vpc = true
+  tags = {
+    Name = "Kube_EIP"
+  }
 }
