@@ -4,12 +4,13 @@ provider "aws" {
 }
 
 module "kubeVpc" {
-  source = "../modules/vpc"
+  #source = "../modules/vpc"
+  source = "github.com/rbhokare145/terraform_aws//modules/vpc?ref=v1.0.0"
   cidr_range = "${var.user_cidr_range}"
 }
 
 module "kubeSubnet" {
-  source = "../modules/subnet"
+  source = "github.com/rbhokare145/terraform_aws//modules/subnet?ref=v1.0.0"
   pub1_cidr_range = "${var.user_pub1_cidr_range}"
   pub2_cidr_range = "${var.user_pub2_cidr_range}"
   pri1_cidr_range = "${var.user_pri1_cidr_range}"
@@ -18,22 +19,22 @@ module "kubeSubnet" {
 }
 
 module "kubeInternetGateway" {
-  source = "../modules/internetGateway"
+  source = "github.com/rbhokare145/terraform_aws//modules/internetGateway?ref=v1.0.0"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
 }
 
 module "kubeEip" {
-  source = "../modules/eip"
+  source = "github.com/rbhokare145/terraform_aws//modules/eip?ref=v1.0.0"
 }
 
 module "kubeNatGateway" {
-  source = "../modules/natgateway"
+  source = "github.com/rbhokare145/terraform_aws//modules/natgateway?ref=v1.0.0"
   eip_allocationid = "${module.kubeEip.eip_allocationid}"
   public_subnetid = "${module.kubeSubnet.publicSubnet1_id}"
 }
 
 module "kubeRouteTable" {
-  source = "../modules/routetables"
+  source = "github.com/rbhokare145/terraform_aws//modules/routetables?ref=v1.0.0"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
   private_sub1_id = "${module.kubeSubnet.privateSubnet1_id}"
   private_sub2_id = "${module.kubeSubnet.privateSubnet2_id}"
