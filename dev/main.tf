@@ -1,10 +1,8 @@
 provider "aws" {
   region = "${var.user_region}"
-
 }
 
 module "kubeVpc" {
-  #source = "../modules/vpc"
   source = "github.com/rbhokare145/terraform_aws//modules/vpc?ref=v1.0.0"
   cidr_range = "${var.user_cidr_range}"
 }
