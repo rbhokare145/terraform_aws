@@ -120,3 +120,24 @@ output "private_routable_name" {
 output "private_routable_id" {
   value = "${module.kubeRouteTable.private_routable_id}"
 }
+
+# Output Network ack info
+
+output "network_acl_name" {
+  value = "${module.kubeNacl.nacl_name}"
+}
+
+output "network_acl_id" {
+  value = "${module.kubeNacl.nacl_id}"
+}
+
+
+# Output Security Group Info
+
+output "security_group_name" {
+  value = "${module.kubeSecurityGroup.KubeSecurityGroupName}"
+}
+
+output "security_group_id" {
+  value = "${module.kubeSecurityGroup.KubeSecurityGroupId}"
+}

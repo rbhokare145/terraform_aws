@@ -45,3 +45,15 @@ module "kubeRouteTable" {
   nat_gw_id = "${module.kubeNatGateway.nat_id}"
   igw_id = "${module.kubeInternetGateway.internetgateway_id}"
 }
+
+module "kubeNacl" {
+  source = "../modules/nacl"
+  vpc_id = "${module.kubeVpc.kubeVpc_id}"
+  cidr_range = "${var.user_cidr_range}"
+}
+
+module "kubeSecurityGroup" {
+  source = "../modules/securityGroup"
+  vpc_id = "${module.kubeVpc.kubeVpc_id}"
+  cidr_range = "${var.user_cidr_range}"
+}
