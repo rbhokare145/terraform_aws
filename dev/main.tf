@@ -57,3 +57,21 @@ module "kubeSecurityGroup" {
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
   cidr_range = "${var.user_cidr_range}"
 }
+
+
+module "kubeNodeKeyPair" {
+  source = "../modules/keypair"
+  key_name = "${var.user_key_name}"
+  public_key = "${var.user_public_key}"
+}
+
+module "kubeEc2Instance" {
+  source = "../modules/ec2"
+  ami_id = "${var.user_ami_id}"
+  ec2_type = "${var.user_ec2_type}"
+  availibility_zone = "${module.kubeSubnet.privateSubnet1_az}"
+  security_groupId = "${module.kubeSecurityGroup.KubeSecurityGroupId}"
+  key_name = "${module.kubeNodeKeyPair.key_name}"
+  private_subnet_id = "${module.kubeSubnet.privateSubnet1_id}"
+  public_subnet_id = "${module.kubeSubnet.publicSubnet1_id}"
+}

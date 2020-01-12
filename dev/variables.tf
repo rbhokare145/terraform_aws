@@ -33,3 +33,24 @@ variable "user_pri2_cidr_range" {
   type = string
   default = "192.168.10.48/28"
 }
+
+
+variable "user_key_name" {
+  description = "name of key pair used by ec2 instance"
+  default = "kubenodekey"
+}
+
+variable "user_public_key" {
+  description = "public key value"
+  default = "a3ViZW5vZGVrZXkK"
+}
+
+variable "user_ami_id" {
+  description = "ami id to be use by ec2 instance"
+  default = "ami-0a74bfeb190bd404f"
+}
+
+variable "user_ec2_type" {
+  description = "type of the ec2 instance"
+  default = "t2.micro"
+}
