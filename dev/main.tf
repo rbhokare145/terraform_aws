@@ -8,12 +8,13 @@ module "kubeVpc" {
 }
 
 module "kubeSubnet" {
-  source = "github.com/rbhokare145/terraform_aws//modules/subnet?ref=v1.0.0"
+  source = "../modules/subnet"
   pub1_cidr_range = "${var.user_pub1_cidr_range}"
   pub2_cidr_range = "${var.user_pub2_cidr_range}"
   pri1_cidr_range = "${var.user_pri1_cidr_range}"
   pri2_cidr_range = "${var.user_pri2_cidr_range}"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
+
 }
 
 module "kubeInternetGateway" {
@@ -50,12 +51,14 @@ module "kubeNacl" {
   source = "../modules/nacl"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
   cidr_range = "${var.user_cidr_range}"
+  user_iprange = "${var.user_ip}"
 }
 
 module "kubeSecurityGroup" {
   source = "../modules/securityGroup"
   vpc_id = "${module.kubeVpc.kubeVpc_id}"
   cidr_range = "${var.user_cidr_range}"
+  user_iprange = "${var.user_ip}"
 }
 
 
@@ -69,9 +72,9 @@ module "kubeEc2Instance" {
   source = "../modules/ec2"
   ami_id = "${var.user_ami_id}"
   ec2_type = "${var.user_ec2_type}"
-  availibility_zone = "${module.kubeSubnet.privateSubnet1_az}"
+  availibility_zone = "${module.kubeSubnet.privateSubnet2_az}"
   security_groupId = "${module.kubeSecurityGroup.KubeSecurityGroupId}"
   key_name = "${module.kubeNodeKeyPair.key_name}"
-  private_subnet_id = "${module.kubeSubnet.privateSubnet1_id}"
-  public_subnet_id = "${module.kubeSubnet.publicSubnet1_id}"
+  private_subnet_id = "${module.kubeSubnet.privateSubnet2_id}"
+  public_subnet_id = "${module.kubeSubnet.publicSubnet2_id}"
 }

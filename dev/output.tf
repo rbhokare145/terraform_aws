@@ -35,7 +35,6 @@ output "public_subnet1_cidr" {
 }
 
 
-
 output "public_subnet2_name" {
   value = "${module.kubeSubnet.publicSubnet2_name}"
 }
@@ -51,7 +50,6 @@ output "public_subnet2_zone" {
 output "public_subnet2_cidr" {
   value = "${module.kubeSubnet.publicSubnet2_cidr}"
 }
-
 
 output "private_subnet1_name" {
   value = "${module.kubeSubnet.privateSubnet1_name}"
@@ -165,6 +163,10 @@ output "kubeMaster_instanceId" {
   value = "${module.kubeEc2Instance.kubeMaster_instanceId}"
 }
 
+output "kubeMaster_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeMaster_instanceIp}"
+}
+
 output "kubeNode1_instanceName" {
   value = "${module.kubeEc2Instance.kubeNode1_instanceName}"
 }
@@ -173,10 +175,18 @@ output "kubeNode1_instanceId" {
   value = "${module.kubeEc2Instance.kubeNode1_instanceId}"
 }
 
+output "kubeNode1_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeNode1_instanceIp}"
+}
+
 output "kubeNode2_instanceId" {
   value = "${module.kubeEc2Instance.kubeNode2_instanceId}"
 }
 
 output "kubeNode2_instanceName" {
   value = "${module.kubeEc2Instance.kubeNode2_instanceName}"
+}
+
+output "kubeNode2_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeNode2_instanceIp}"
 }

@@ -1,4 +1,4 @@
-resource "aws_instance" "jumbBox" {
+resource "aws_instance" "jumpBox" {
     ami = "${var.ami_id}"
     instance_type = "${var.ec2_type}"
     availability_zone = "${var.availibility_zone}"
@@ -7,7 +7,7 @@ resource "aws_instance" "jumbBox" {
     subnet_id = "${var.public_subnet_id}"
     associate_public_ip_address = true
     tags = {
-      Name = "jumpMaster"
+      Name = "JumbBox"
   }
 }
 

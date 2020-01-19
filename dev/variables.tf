@@ -10,6 +10,11 @@ variable "user_cidr_range" {
   default = "192.168.10.0/24"
 }
 
+variable "user_ip" {
+  description = "user machine ip adress range to allow, user to be ssh on instances externelly"
+  type = string
+}
+
 variable "user_pub1_cidr_range" {
   description = "public1 cidr range for the subnet"
   type = string
