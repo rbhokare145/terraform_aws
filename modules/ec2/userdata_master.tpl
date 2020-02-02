@@ -21,27 +21,3 @@ EOF
 
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
-
-
-# To init kubeadm and fannel
-# --ignore-preflight-errors=NumCPU : needed as I am using free tier node, take away this argument incase of heavy instance type.
-
-
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$$ {kubemasterip} --ignore-preflight-errors=NumCPU
-
-
-# To start using your cluster, you need to run the following as a regular user:
-
-mkdir -p $HOME/.kube
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-# To install POD network and setup  CoreDNS Pod and other key object of the cluster
-sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/2140ac876ef134e0ed5af15c65e414cf26827915/Documentation/kube-flannel.yml
-
-#export TOKEN_NAME=$(kubeadm token list | awk '{print $1}' | grep -v "TOKEN")
-#echo "TOKEN_NAME: $TOKEN_NAME"
-
-#export CA_CERT=$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //')
-
-#echo "CA_CERT: \$CA_CRT"

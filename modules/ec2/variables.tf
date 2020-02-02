@@ -28,7 +28,3 @@ variable "key_name" {
   description = "key pair name use by ec2 instance"
 }
 
-variable "eni_id" {
-  description = "ID for the eni"
-}
-

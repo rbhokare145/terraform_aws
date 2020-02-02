@@ -1,18 +1,9 @@
-data
-
 data "template_file" "userdata_mini" {
   template = "${file("${path.module}/userdata_mini.tpl")}"
 }
 
-locals {
-  kubemasterIp = data.aws_network_interface.kubeMasterStatic.id
-}
-
 data "template_file" "userdata_master" {
- template = "${file("${path.module}/userdata_master.tpl")}"
-  vars = {
-    kubemasterip = "${local.kubemasterIp}"
-  }
+  template = "${file("${path.module}/userdata_master.tpl")}"
 }
 
 resource "aws_instance" "jumpBox" {
@@ -39,8 +30,8 @@ resource "aws_instance" "kubeMaster" {
     tags = {
       Name = "KubeMaster"
     }
-
 }
+
 
 resource "aws_instance" "kubeNode1" {
     ami = "${var.ami_id}"

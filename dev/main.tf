@@ -79,7 +79,6 @@ module "kubeEni" {
 
 module "kubeEc2Instance" {
   source = "../modules/ec2"
-  eni_id = "${module.kubeEni.aws_network_interface_id.value}"
   ami_id = "${var.user_ami_id}"
   ec2_type = "${var.user_ec2_type}"
   availibility_zone = "${module.kubeSubnet.privateSubnet2_az}"

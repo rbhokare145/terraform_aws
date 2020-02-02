@@ -21,6 +21,3 @@ EOF
 
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
-
-#sudo kubeadm join --token "${TOKEN_NAME}" ${kubemasterip}:6443 --discovery-token-ca-cert-hash sha256:"${CA_CERT}"
-
