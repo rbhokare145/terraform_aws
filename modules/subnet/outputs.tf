@@ -35,7 +35,6 @@ output "publicSubnet2_cidr" {
 
 }
 
-
 output "privateSubnet1_name" {
   value = "${aws_subnet.kubePrivateSubnet1.tags}"
 }

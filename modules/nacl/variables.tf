@@ -5,3 +5,7 @@ variable "vpc_id" {
 variable "cidr_range" {
   description = "vpc cidr range to be defined in rule"
 }
+
+variable "user_iprange" {
+  description = "user machine ip address range"
+}

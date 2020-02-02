@@ -35,7 +35,6 @@ output "public_subnet1_cidr" {
 }
 
 
-
 output "public_subnet2_name" {
   value = "${module.kubeSubnet.publicSubnet2_name}"
 }
@@ -51,9 +50,6 @@ output "public_subnet2_zone" {
 output "public_subnet2_cidr" {
   value = "${module.kubeSubnet.publicSubnet2_cidr}"
 }
-
-
-
 
 output "private_subnet1_name" {
   value = "${module.kubeSubnet.privateSubnet1_name}"
@@ -140,4 +136,61 @@ output "security_group_name" {
 
 output "security_group_id" {
   value = "${module.kubeSecurityGroup.KubeSecurityGroupId}"
+}
+
+output "key_name" {
+  value = "${module.kubeNodeKeyPair.key_name}"
+}
+
+
+output "jumbBox_instanceName" {
+  value = "${module.kubeEc2Instance.jumbBox_instanceName}"
+}
+
+output "jumpBox_instanceId" {
+  value = "${module.kubeEc2Instance.jumpBox_instanceId}"
+}
+
+output "jumbBox_instancePublicIp" {
+  value = "${module.kubeEc2Instance.jumbBox_instancePublicIp}"
+}
+
+output "kubeMaster_instanceName" {
+  value = "${module.kubeEc2Instance.kubeMaster_instanceName}"
+}
+
+output "kubeMaster_instanceId" {
+  value = "${module.kubeEc2Instance.kubeMaster_instanceId}"
+}
+
+output "kubeMaster_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeMaster_instanceIp}"
+}
+
+output "kubeNode1_instanceName" {
+  value = "${module.kubeEc2Instance.kubeNode1_instanceName}"
+}
+
+output "kubeNode1_instanceId" {
+  value = "${module.kubeEc2Instance.kubeNode1_instanceId}"
+}
+
+output "kubeNode1_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeNode1_instanceIp}"
+}
+
+output "kubeNode2_instanceId" {
+  value = "${module.kubeEc2Instance.kubeNode2_instanceId}"
+}
+
+output "kubeNode2_instanceName" {
+  value = "${module.kubeEc2Instance.kubeNode2_instanceName}"
+}
+
+output "kubeNode2_instanceIp" {
+  value = "${module.kubeEc2Instance.kubeNode2_instanceIp}"
+}
+
+output "eni_id" {
+  value = "${module.kubeEni.aws_network_interface_id}"
 }
