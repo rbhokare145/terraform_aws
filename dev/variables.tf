@@ -11,7 +11,7 @@ variable "user_cidr_range" {
 }
 
 variable "user_ip" {
-  description = "user machine ip adress range to allow, user to be ssh on instances externelly"
+  description = "user machine ip-address range to allow user to access ec2 instances externelly"
   type = string
 }
 

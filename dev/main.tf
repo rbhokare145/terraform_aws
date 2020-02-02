@@ -26,6 +26,8 @@ module "kubeEip" {
   source = "github.com/rbhokare145/terraform_aws//modules/eip?ref=v1.0.0"
 }
 
+
+
 module "kubeNatGateway" {
   source = "github.com/rbhokare145/terraform_aws//modules/natgateway?ref=v1.0.0"
   eip_allocationid = "${module.kubeEip.eip_allocationid}"
@@ -68,8 +70,16 @@ module "kubeNodeKeyPair" {
   public_key = "${var.user_public_key}"
 }
 
+module "kubeEni" {
+  source = "../modules/eni"
+  private_subnet_id = "${module.kubeSubnet.privateSubnet2_id}"
+  security_groupId = "${module.kubeSecurityGroup.KubeSecurityGroupId}"
+  kubemaster_instance = "${module.kubeEc2Instance.kubeMaster_instanceId}"
+}
+
 module "kubeEc2Instance" {
   source = "../modules/ec2"
+  eni_id = "${module.kubeEni.aws_network_interface_id.value}"
   ami_id = "${var.user_ami_id}"
   ec2_type = "${var.user_ec2_type}"
   availibility_zone = "${module.kubeSubnet.privateSubnet2_az}"
@@ -78,3 +88,4 @@ module "kubeEc2Instance" {
   private_subnet_id = "${module.kubeSubnet.privateSubnet2_id}"
   public_subnet_id = "${module.kubeSubnet.publicSubnet2_id}"
 }
+

@@ -190,3 +190,7 @@ output "kubeNode2_instanceName" {
 output "kubeNode2_instanceIp" {
   value = "${module.kubeEc2Instance.kubeNode2_instanceIp}"
 }
+
+output "eni_id" {
+  value = "${module.kubeEni.aws_network_interface_id}"
+}

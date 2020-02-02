@@ -23,6 +23,13 @@ resource "aws_security_group" "kubeSecurityGroup" {
     cidr_blocks = ["${var.cidr_range}", "${var.user_iprange}"]
   }
 
+  ingress {
+    from_port = 6443
+    protocol = "tcp"
+    to_port = 6443
+    cidr_blocks = ["${var.cidr_range}}"]
+  }
+
   egress {
     from_port = 0
     protocol =  -1
