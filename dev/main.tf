@@ -27,7 +27,6 @@ module "kubeEip" {
 }
 
 
-
 module "kubeNatGateway" {
   source = "github.com/rbhokare145/terraform_aws//modules/natgateway?ref=v1.0.0"
   eip_allocationid = "${module.kubeEip.eip_allocationid}"
@@ -63,7 +62,6 @@ module "kubeSecurityGroup" {
   user_iprange = "${var.user_ip}"
 }
 
-
 module "kubeNodeKeyPair" {
   source = "../modules/keypair"
   key_name = "${var.user_key_name}"
@@ -79,6 +77,7 @@ module "kubeEni" {
 
 module "kubeEc2Instance" {
   source = "../modules/ec2"
+  keyfilepath = "~/ssh/kubenodeprivate"
   ami_id = "${var.user_ami_id}"
   ec2_type = "${var.user_ec2_type}"
   availibility_zone = "${module.kubeSubnet.privateSubnet2_az}"
@@ -87,4 +86,3 @@ module "kubeEc2Instance" {
   private_subnet_id = "${module.kubeSubnet.privateSubnet2_id}"
   public_subnet_id = "${module.kubeSubnet.publicSubnet2_id}"
 }
-
