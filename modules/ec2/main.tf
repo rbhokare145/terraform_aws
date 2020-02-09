@@ -45,6 +45,22 @@ resource "aws_instance" "kubeMaster" {
     key_name = "${var.key_name}"
     subnet_id = "${var.private_subnet_id}"
     user_data = "${data.template_file.userdata_master.rendered}"
+
+    connection {
+       type     = "ssh"
+       user     = "ubuntu"
+       bastion_host = "${aws_instance.jumpBox.public_ip}"
+       bastion_private_key = "${file("~/.ssh/id_rsa")}"
+       private_key = "${file("~/.ssh/id_rsa")}"
+       host     =  "${aws_instance.kubeMaster.private_ip}"
+       agent = false
+    }
+
+     provisioner "file" {
+       source = "${path.module}/kubemaster.sh"
+       destination = "/tmp/kubemaster.sh"
+    }
+
     tags = {
       Name = "KubeMaster"
     }
