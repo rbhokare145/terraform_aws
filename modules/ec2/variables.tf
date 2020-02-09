@@ -27,8 +27,3 @@ variable "private_subnet_id" {
 variable "key_name" {
   description = "key pair name use by ec2 instance"
 }
-
-
-variable "keyfilepath" {
-  description = "path of the ec2 key file"
-}

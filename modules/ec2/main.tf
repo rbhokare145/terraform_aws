@@ -14,6 +14,7 @@ resource "aws_instance" "jumpBox" {
     key_name = "${var.key_name}"
     subnet_id = "${var.public_subnet_id}"
     associate_public_ip_address = true
+
     connection {
        type     = "ssh"
        user     = "ubuntu"
@@ -21,7 +22,7 @@ resource "aws_instance" "jumpBox" {
        host     =  "${aws_instance.jumpBox.public_ip}"
        agent = false
     }
-  
+
     provisioner "file" {
        source = "${path.module}/kubemaster.sh"
        destination = "/tmp/kubemaster.sh"
