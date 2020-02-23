@@ -7,7 +7,7 @@ read -p "Enter the KubeMaster static private ip : " kubemasterip
 
 # To initiate kubeadm and fannel
 
-if [ ! -z ${networkrange} ] && [ ! -z ${kubemasterip} ]; then
+if [ ! -z ${networkrange} ] && [ ! -z ${kubemasterip} ];then
 
     # --ignore-preflight-errors=NumCPU : needed as I am using free tier node, take away this argument incase of heavy instance type.
 
@@ -18,7 +18,7 @@ fi
 # To start using your cluster, you need to run the following as a regular user:
 
 
-if [ ! -d $HOME/.kube ]; then
+if [ ! -d $HOME/.kube ];then
 
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
