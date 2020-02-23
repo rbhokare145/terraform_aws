@@ -14,3 +14,25 @@ solution :
 3) Make use of Putty-Gen to convert the given private key (which is in .pem format) to .ppk
 4) Open PuttyGen --> click on Conversions -> import key --> and then same private key (.ppk) and public key
 5) Make use of the available .ppk private key to login inside ec2 by using putty
+
+
+Issue#2
+
+I have seen this issue when creating shell scripts in Windows env using pychamr editora and then porting over to run on a Unix environment.
+
+The script execution getting failed with "bin/bash^M: bad interpreter: No such file or directory"
+
+
+solution : 
+
+1) In notepad++ in the bottom right of the screen, it tells you the document format. By default, it will say Dos\Windows. To change it go to
+2) Pycharm LineSeperator to change to Unix
+Try running dos2unix on the script:
+
+http://dos2unix.sourceforge.net/
+
+
+Reasone : Unix uses different line endings so can't read the file you created on Windows. Hence it is seeing ^M as an illegal character.
+
+If you want to write a file on Windows and then port over, make sure your editor is set to create files in UNIX format.
+
