@@ -2,6 +2,28 @@ provider "aws" {
   region = "${var.user_region}"
 }
 
+terraform {
+  backend "s3" {
+      bucket = "kube-terraform-up-and-running-locks"
+      key = "global/s3/terraform.tfstate"
+      region = "ap-south-1"
+      dynamodb_table = "terraform-up-and-running-locks"
+      encrypt = "true"
+  }
+}
+
+module "kubeS3" {
+  source = "../modules/s3"
+  bucket_name = "${var.bucket_name}"
+  bucket_versioning_mode = "${var.versioning_mode}"
+}
+
+module "kubeDynamoDB" {
+  source = "../modules/dynamodb"
+  dynamodb_name = "${var.dynamodb_name}"
+}
+
+
 module "kubeVpc" {
   source = "github.com/rbhokare145/terraform_aws//modules/vpc?ref=v1.0.0"
   cidr_range = "${var.user_cidr_range}"

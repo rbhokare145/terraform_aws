@@ -194,3 +194,12 @@ output "kubeNode2_instanceIp" {
 output "eni_id" {
   value = "${module.kubeEni.aws_network_interface_id}"
 }
+
+output "s3_bucket_arn" {
+  value       = "${module.kubeS3.s3_bucket_arn}"
+  description = "The ARN of the S3 bucket"
+}
+output "dynamodb_table_name" {
+  value       = "${module.kubeDynamoDB.dynamodb_table_name}"
+  description = "The name of the DynamoDB table"
+}

@@ -59,3 +59,15 @@ variable "user_ec2_type" {
   description = "type of the ec2 instance"
   default = "t2.micro"
 }
+
+variable "bucket_name" {
+  default = "kube-terraform-up-and-running-locks"
+}
+
+variable "versioning_mode" {
+  default = true
+}
+
+variable "dynamodb_name" {
+  default = "terraform-up-and-running-locks"
+}
