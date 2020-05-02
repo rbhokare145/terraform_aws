@@ -8,7 +8,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchlabels:
+    matchLabels:
       app: nodejs-sample
   template:
     metadata:
