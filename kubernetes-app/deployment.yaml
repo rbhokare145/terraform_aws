@@ -1,0 +1,23 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+    name : nodejs-sample
+    lables:
+        app : nodejs-sample
+
+spec :
+    replicas : 1
+    selector :
+        matchlables:
+            app : nodejs-sample
+    template :
+        metadata :
+            lables :
+                app : nodejs-sample
+        spec :
+            containers :
+              - name : nodejs-sample
+                image : rbj1456/k8images:nodejs-sample-v1
+                ports :
+                  - containerPort : 3000
+                    
