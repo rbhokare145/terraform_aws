@@ -14,6 +14,7 @@ resource "aws_instance" "jumpBox" {
     key_name = "${var.key_name}"
     subnet_id = "${var.public_subnet_id}"
     associate_public_ip_address = true
+    user_data = "${data.template_file.userdata_master.rendered}"
 
     connection {
        type     = "ssh"
