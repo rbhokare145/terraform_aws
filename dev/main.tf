@@ -78,7 +78,7 @@ module "kubeNacl" {
 }
 
 module "kubeSecurityGroup" {
-  source       = "github.com/rbhokare145/terraform_aws//modules/securityGroup?ref=v2.0.0"
+  source       = "../modules/securityGroup"
   vpc_id       = "${module.kubeVpc.kubeVpc_id}"
   cidr_range   = "${var.user_cidr_range}"
   user_iprange = "${var.user_ip}"
@@ -98,7 +98,7 @@ module "kubeEni" {
 }
 
 module "kubeEc2Instance" {
-  source            = "github.com/rbhokare145/terraform_aws//modules/ec2?ref=v2.0.0"
+  source            = "../modules/ec2"
   ami_id            = "${var.user_ami_id}"
   ec2_type          = "${var.user_ec2_type}"
   availibility_zone = "${module.kubeSubnet.privateSubnet2_az}"
