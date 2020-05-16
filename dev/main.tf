@@ -78,8 +78,7 @@ module "kubeNacl" {
 }
 
 module "kubeSecurityGroup" {
-  source       = "../modules/securityGroup"
-  vpc_id       = "${module.kubeVpc.kubeVpc_id}"
+  source       = "github.com/rbhokare145/terraform_aws//modules/securityGroup?ref=v2.0.0"
   cidr_range   = "${var.user_cidr_range}"
   user_iprange = "${var.user_ip}"
 }
