@@ -1,0 +1,12 @@
+apiVersion : v1
+kind : PersistantVolumeClaim
+metadata:
+  name : influxdb-pvc
+  label :
+    app: influxdb
+spec :
+  accessModes :
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
