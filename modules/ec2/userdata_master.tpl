@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get install -y docker-ce=17.03.3~ce-0~ubuntu-xenial
 sudo apt-get install -y dos2unix
 
-# To install kubelet, kubectl , kubeadm
+# To install kube tools
 
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -22,3 +22,11 @@ EOF
 
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
+
+# To install kubectx, kubens helm
+sudo git clone https://github.com/ahmetb/kubectx.git
+sudo export PATH=$PATH:/home/ubuntu/kubectx/
+
+# To install helm
+
+sudo curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash

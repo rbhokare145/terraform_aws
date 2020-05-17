@@ -9,10 +9,12 @@ spec :
   selector :
     app : nodejs-sample
   type : LoadBalancer
-  externalIPs: 3.6.129.254
+  externalIPs:
+  - 13.235.52.58
   ports :
     - name : http
       protocol : TCP
       port : 3000
-      targePort : 3000
+      targetPort : 3000
+
 
