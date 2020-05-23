@@ -4,7 +4,7 @@ metadata:
   name: telegraf-service
   labels:
      app: telegraf
-     
+
 spec:
   selectors:
      app: telegraf
