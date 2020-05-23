@@ -24,9 +24,12 @@ sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kubectl
 
 # To install kubectx, kubens helm
-sudo git clone https://github.com/ahmetb/kubectx.git
+cd ~ && sudo git clone https://github.com/ahmetb/kubectx.git
 sudo export PATH=$PATH:/home/ubuntu/kubectx/
 
 # To install helm
 
 sudo curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+# To clone terraform_aws
+cd ~ && https://github.com/rbhokare145/terraform_aws.git
