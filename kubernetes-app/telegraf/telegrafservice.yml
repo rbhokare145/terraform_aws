@@ -6,7 +6,7 @@ metadata:
      app: telegraf
 
 spec:
-  selectors:
+  selector:
      app: telegraf
   type : NodePort
   ports:
