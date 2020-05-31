@@ -15,7 +15,7 @@ spec:
       labels:
         app: nodejs-sample
     spec:
-      containers
+      containers:
         - name: nodejs-sample
           image: "rbj1456/k8images:nodejs-sample-v1"
           ports:
