@@ -18,7 +18,7 @@ spec:
       containers:
         - name: nodejs-sample
           image: "rbj1456/k8images:nodejs-sample-v1"
-      ports:
-        - name : http
-          protocol: TCP
-          containerPort: 3000
+    ports:
+      - name : http
+        protocol: TCP
+        containerPort: 3000
