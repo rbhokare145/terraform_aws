@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To set up variable
+
 read -p "Enter the KubeMaster static private ip : " kubemasterip
 read -p "Enter the token_name : " token
 read -p "Enter the ca_cert : " ca_cert

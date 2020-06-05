@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To set up variable
+
 read -p "Enter the KubeNetwork CIDR range [10.244.0.0/16] : " networkrange
 
 read -p "Enter the KubeMaster static private ip : " kubemasterip

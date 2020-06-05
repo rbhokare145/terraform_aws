@@ -1,9 +1,17 @@
-data "template_file" "userdata_mini" {
-  template = "${file("${path.module}/userdata_mini.tpl")}"
+data "template_file" "userdata_mini_1" {
+  template = "${file("${path.module}/userdata_mini_1.tpl")}"
+}
+
+data "template_file" "userdata_mini_2" {
+  template = "${file("${path.module}/userdata_mini_2.tpl")}"
 }
 
 data "template_file" "userdata_master" {
   template = "${file("${path.module}/userdata_master.tpl")}"
+}
+
+data "template_file" "jump_box" {
+  template = "${file("${path.module}/jump_box.tpl")}"
 }
 
 resource "aws_instance" "jumpBox" {
@@ -14,7 +22,7 @@ resource "aws_instance" "jumpBox" {
     key_name = "${var.key_name}"
     subnet_id = "${var.public_subnet_id}"
     associate_public_ip_address = true
-    user_data = "${data.template_file.userdata_master.rendered}"
+    user_data = "${data.template_file.jump_box.rendered}"
 
     connection {
        type     = "ssh"
@@ -25,13 +33,8 @@ resource "aws_instance" "jumpBox" {
     }
 
     provisioner "file" {
-       source = "${path.module}/kubemaster.sh"
-       destination = "/$HOME/kubemaster.sh"
-    }
-
-    provisioner "file" {
-       source = "${path.module}/kubemini.sh"
-       destination = "/$HOME/kubemini.sh"
+        source = "${path.module}/kubeconfig.sh"
+        destination = "/$HOME/kubeconfig.sh"
     }
 
     tags = {
@@ -61,7 +64,12 @@ resource "aws_instance" "kubeMaster" {
      provisioner "file" {
        source = "${path.module}/kubemaster.sh"
        destination = "/$HOME/kubemaster.sh"
-    }
+     }
+
+      provisioner "file" {
+        source = "${path.module}/kubeconfig.sh"
+        destination = "/$HOME/kubeconfig.sh"
+     }
 
     tags = {
       Name = "KubeMaster"
@@ -75,7 +83,7 @@ resource "aws_instance" "kubeNode1" {
     security_groups = ["${var.security_groupId}"]
     key_name = "${var.key_name}"
     subnet_id = "${var.private_subnet_id}"
-    user_data = "${data.template_file.userdata_mini.rendered}"
+    user_data = "${data.template_file.userdata_mini_1.rendered}"
     connection {
        type     = "ssh"
        user     = "ubuntu"
@@ -86,7 +94,7 @@ resource "aws_instance" "kubeNode1" {
        agent = false
     }
 
-     provisioner "file" {
+    provisioner "file" {
        source = "${path.module}/kubemini.sh"
        destination = "/$HOME/kubemini.sh"
     }
@@ -102,7 +110,7 @@ resource "aws_instance" "kubeNode2" {
     security_groups = ["${var.security_groupId}"]
     key_name = "${var.key_name}"
     subnet_id = "${var.private_subnet_id}"
-    user_data = "${data.template_file.userdata_mini.rendered}"
+    user_data = "${data.template_file.userdata_mini_2.rendered}"
     connection {
        type     = "ssh"
        user     = "ubuntu"
@@ -113,7 +121,7 @@ resource "aws_instance" "kubeNode2" {
        agent = false
     }
 
-     provisioner "file" {
+    provisioner "file" {
        source = "${path.module}/kubemini.sh"
        destination = "/$HOME/kubemini.sh"
     }
