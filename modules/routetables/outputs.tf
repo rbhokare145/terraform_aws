@@ -1,5 +1,5 @@
 output "private_routable_name" {
-  value = "${aws_route_table.kubePrivateRt.tags}"
+  value = "${aws_route_table.kubePrivateRt.tags["Name"]}"
 }
 
 output "private_routable_id"{

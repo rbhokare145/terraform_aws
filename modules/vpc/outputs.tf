@@ -9,7 +9,7 @@ output "kubeVpc_id" {
 }
 
 output "kubeVpc_name" {
-  value = "${aws_vpc.kubeVpc.tags}"
+  value = "${aws_vpc.kubeVpc.tags["Name"]}"
 }
 
 output "kubeVpc_routetableid" {

@@ -1,5 +1,5 @@
 output "publicSubnet1_name" {
-  value = "${aws_subnet.kubePublicSubnet1.tags}"
+  value = "${aws_subnet.kubePublicSubnet1.tags["Name"]}"
 }
 
 output "publicSubnet1_az" {
@@ -18,7 +18,7 @@ output "publicSubnet1_cidr" {
 
 
 output "publicSubnet2_name" {
-  value = "${aws_subnet.kubePublicSubnet2.tags}"
+  value = "${aws_subnet.kubePublicSubnet2.tags["Name"]}"
 }
 
 output "publicSubnet2_az" {
@@ -36,7 +36,7 @@ output "publicSubnet2_cidr" {
 }
 
 output "privateSubnet1_name" {
-  value = "${aws_subnet.kubePrivateSubnet1.tags}"
+  value = "${aws_subnet.kubePrivateSubnet1.tags["Name"]}"
 }
 
 output "privateSubnet1_az" {
@@ -53,7 +53,7 @@ output "privateSubnet1_cidr" {
 
 
 output "privateSubnet2_name" {
-  value = "${aws_subnet.kubePrivateSubnet2.tags}"
+  value = "${aws_subnet.kubePrivateSubnet2.tags["Name"]}"
 }
 
 output "privateSubnet2_az" {

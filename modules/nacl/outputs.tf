@@ -3,5 +3,5 @@ output "nacl_id" {
 }
 
 output "nacl_name" {
-  value = "${aws_network_acl.kubeNetworkAcl.tags}"
+  value = "${aws_network_acl.kubeNetworkAcl.tags["Name"]}"
 }
