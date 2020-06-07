@@ -2,7 +2,7 @@
 
 # Prerequisite's
 
-	1. terraform version 12 : Click here to download.
+	1. terraform version 12 : Click [here] (https://google.com) to download.
 	2. AWS Account : Click here to create a free tier AWS account.
 	3. PuTTy, PuTTygen, Pageant : Click here to download .
 	4. Git Bash : Click here to download.
