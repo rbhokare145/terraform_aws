@@ -20,16 +20,19 @@
 	8. Enter user ip-address range to allow an ec2 instances access externally. On Google type  my-ip
 	   and then pass the ip range as for ex. 123.201.100.40/32
     	9. After successfull `terraform apply` open Pageant to add the ssh private keys for forwarding and then putty to login on jumbbox, user:pass (ubuntu:ubuntu)
+
     	10. From jump box ssh to kubernetes master ip, inside the homedir, run `sh kubemaster.sh` and supply the inputes.
         	this step will install and configure kube master on given ec2.
        		"Enter the KubeNetwork CIDR range [10.244.0.0/16]" : 10.244.0.0/16
         	"Enter the KubeMaster static private ip" : 192.168.11.53 ( should be enter your own kubemaster node private ip )
 	       (The successfull script will generate `TOKEN_NAME` and `CA_CERT`, those are required on next step
+
    	11. From jump box ssh to kubernetes node1 ip, inside the homedir, run `sh kubemini.sh` and supply the inputes
         	"Enter the KubeMaster static private ip : " kubemasterip
         	"Enter the token_name : " token (from step#10)
         	"Enter the ca_cert : " ca_cert  (from step#10)
          	( Nodes will take around a minute to complete cluster registrations)
+
     	12. Untill the Kubecluster with one master and two nodes has been setup, check cluster status with `kubectl get nodes`
     	13. From jump box ssh to kubernetes master ip, inside the homedir, run `sh kubeconfig.sh` to lable the nodes in cluster
     	14. To access the cluster from outside either from jump box or from your local workstation copy the dir `/home/ubuntu/.kube` to your local homedir
