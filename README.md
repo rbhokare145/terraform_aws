@@ -33,10 +33,10 @@
         	"Enter the ca_cert : " ca_cert  (from step#10)
          	( Nodes will take around a minute to complete cluster registrations)
 
-    	12. Untill the Kubecluster with one master and two nodes has been setup, check cluster status with `kubectl get nodes`
-    	13. From jump box ssh to kubernetes master ip, inside the homedir, run `sh kubeconfig.sh` to lable the nodes in cluster
-    	14. To access the cluster from outside either from jump box or from your local workstation copy the dir `/home/ubuntu/.kube` to your local homedir
-        	`scp -pr "$kubemaster-ip":/home/ubuntu/.kube .`
+    12. Untill the Kubecluster with one master and two nodes has been setup, check cluster status with `kubectl get nodes`
+    13. From jump box ssh to kubernetes master ip, inside the homedir, run `sh kubeconfig.sh` to lable the nodes in cluster
+    14. To access the cluster from outside either from jump box or from your local workstation copy the dir `/home/ubuntu/.kube` to your local homedir
+        `scp -pr "$kubemaster-ip":/home/ubuntu/.kube .`
        
 
 
